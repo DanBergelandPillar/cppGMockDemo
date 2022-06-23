@@ -2,12 +2,17 @@
 
 using namespace led_controller;
 
-LedController::LedController(i2c::I2cInterface *i2cbus){
+int LED_ADDRESS = 42;
+int ENABLE_LIGHTS_DATA = 255;
 
+LedController::LedController(i2c::I2cInterface *bus){
+    memberBus = bus;
 }
 
-void LedController::enableLights(){
+bool LedController::enableLights(){
+    bool success = memberBus->writeData(LED_ADDRESS, ENABLE_LIGHTS_DATA);
+    return success;
 }
 
-void LedController::disableLights(){
+bool LedController::disableLights(){
 }

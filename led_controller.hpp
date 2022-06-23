@@ -8,18 +8,19 @@ namespace led_controller
 {
     class LedControllerInterface
     {
-        public:
-            
-            virtual void enableLights() = 0;
-            virtual void disableLights() = 0;
+        public: 
+            virtual bool enableLights() = 0;
+            virtual bool disableLights() = 0;
+        protected:
+            i2c::I2cInterface* memberBus;
     };
 
     class LedController : public LedControllerInterface
     {
         public:
-            LedController(i2c::I2cInterface *i2cbus);
-            void enableLights();
-            void disableLights();
+            LedController(i2c::I2cInterface *bus);
+            bool enableLights();
+            bool disableLights();
     };
 }
 #endif // LED_CONTROLLER_H guard
