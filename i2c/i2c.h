@@ -9,6 +9,7 @@ namespace i2c
     {
         public:
             virtual bool writeData(int address, int data) = 0;
+            virtual ~I2cInterface() {};
     };
 
     class I2cBus : public I2cInterface

@@ -15,6 +15,8 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
+add_subdirectory(i2c)
+
 add_executable(
   led_controller_test
   led_controller_test.cpp
@@ -22,6 +24,8 @@ add_executable(
 )
 target_link_libraries(
   led_controller_test
+  i2c
+  gmock_main
   gtest_main
 )
 

@@ -2,12 +2,14 @@
 #define LED_CONTROLLER_H
 
 #include <iostream>
+#include "i2c/i2c.h"
 
 namespace led_controller
 {
     class LedControllerInterface
     {
         public:
+            
             virtual void enableLights() = 0;
             virtual void disableLights() = 0;
     };
@@ -15,6 +17,7 @@ namespace led_controller
     class LedController : public LedControllerInterface
     {
         public:
+            LedController(i2c::I2cInterface *i2cbus);
             void enableLights();
             void disableLights();
     };
